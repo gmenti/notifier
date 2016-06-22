@@ -81,16 +81,10 @@ class FlashNotifier
      */
     private function message($message, $title, $level)
     {
-        $notification = [
-            'type' => $level,
-            'content' => [
-                'title' => $title,
-                'message' => $message,
-            ],
-        ];
-
-        $this->session->flash('flash_notification', $notification);
-
+        $this->session->flash('flash.type', $level);
+        $this->session->flash('flash.content.title', $title);
+        $this->session->flash('flash.content.message', $message);
+        
         return $this;
     }
 
