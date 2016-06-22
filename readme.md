@@ -4,13 +4,23 @@
 
 First, pull in the package through Composer.
 
-Run `composer require notifier/flash`
+Add the repository in your composer.json:
+```"repositories": [
+    {
+        "url": "https://github.com/GMenti/l5-notifier.git",
+        "type": "git"
+    }
+],```
+
+And, add the notifier in require dependecies:
+```"menti/l5-notifier": "dev-master"```
+
 
 And then, if using Laravel 5, include the service provider within `config/app.php`.
 
 ```php
 'providers' => [
-    Notifier\Flash\FlashServiceProvider::class,
+    Menti\Flash\FlashServiceProvider::class,
 ];
 ```
 
@@ -18,7 +28,7 @@ And, for convenience, add a facade alias to this same file at the bottom:
 
 ```php
 'aliases' => [
-    'Flash' => Notifier\Flash\Flash:class,
+    'Flash' => Menti\Flash\Flash:class,
 ];
 ```
 
