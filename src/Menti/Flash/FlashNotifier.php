@@ -54,6 +54,19 @@ class FlashNotifier
      */
     public function error($message, $title = '')
     {
+        $this->message($message, $title, 'error');
+
+        return $this;
+    }
+
+    /**
+     * Flash an danger message.
+     *
+     * @param  string $message
+     * @return $this
+     */
+    public function danger($message, $title = '')
+    {
         $this->message($message, $title, 'danger');
 
         return $this;
@@ -84,7 +97,7 @@ class FlashNotifier
         $this->session->flash('flash.type', $level);
         $this->session->flash('flash.content.title', $title);
         $this->session->flash('flash.content.message', $message);
-        
+
         return $this;
     }
 

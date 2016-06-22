@@ -38,12 +38,22 @@ class FlashTest extends PHPUnit_Framework_TestCase {
 	/** @test */
 	public function it_displays_error_flash_notifications()
 	{
-        $this->session->shouldReceive('flash')->with('flash.type', 'danger');
+        $this->session->shouldReceive('flash')->with('flash.type', 'error');
         $this->session->shouldReceive('flash')->with('flash.content.title', 'title');
         $this->session->shouldReceive('flash')->with('flash.content.message', 'message');
 
         $this->flash->error('message', 'title');
 	}
+
+    /** @test */
+    public function it_displays_danger_flash_notifications()
+    {
+        $this->session->shouldReceive('flash')->with('flash.type', 'danger');
+        $this->session->shouldReceive('flash')->with('flash.content.title', 'title');
+        $this->session->shouldReceive('flash')->with('flash.content.message', 'message');
+
+        $this->flash->danger('message', 'title');
+    }
 
     /** @test */
     public function it_displays_warning_flash_notifications()
