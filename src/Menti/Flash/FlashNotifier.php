@@ -26,9 +26,9 @@ class FlashNotifier
      * @param string $message
      * @return $this
      */
-    public function info($message)
+    public function info($message, $title = '')
     {
-        $this->message($message, 'info');
+        $this->message($message, $title, 'info');
 
         return $this;
     }
@@ -39,9 +39,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function success($message)
+    public function success($message, $title = '')
     {
-        $this->message($message, 'success');
+        $this->message($message, $title, 'success');
 
         return $this;
     }
@@ -52,9 +52,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function error($message)
+    public function error($message, $title = '')
     {
-        $this->message($message, 'danger');
+        $this->message($message, $title, 'danger');
 
         return $this;
     }
@@ -65,27 +65,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function warning($message)
+    public function warning($message, $title = '')
     {
-        $this->message($message, 'warning');
-
-        return $this;
-    }
-
-    /**
-     * Flash an overlay modal.
-     *
-     * @param  string $message
-     * @param  string $title
-     * @param  string $level
-     * @return $this
-     */
-    public function overlay($message, $title = 'Notice', $level = 'info')
-    {
-        $this->message($message, $level);
-
-        $this->session->flash('flash_notification.overlay', true);
-        $this->session->flash('flash_notification.title', $title);
+        $this->message($message, $title, 'warning');
 
         return $this;
     }
@@ -97,22 +79,17 @@ class FlashNotifier
      * @param  string $level
      * @return $this
      */
-    public function message($message, $level = 'info')
+    private function message($message, $title, $level)
     {
-        $this->session->flash('flash_notification.message', $message);
-        $this->session->flash('flash_notification.level', $level);
+        $notification = [
+            'type' => $level,
+            'content' => [
+                'title' => $title,
+                'message' => $message,
+            ],
+        ];
 
-        return $this;
-    }
-
-    /**
-     * Add an "important" flash to the session.
-     *
-     * @return $this
-     */
-    public function important()
-    {
-        $this->session->flash('flash_notification.important', true);
+        $this->session->flash('flash_notification', json_encode($notification));
 
         return $this;
     }

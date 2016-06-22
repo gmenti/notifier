@@ -15,86 +15,68 @@ class FlashTest extends PHPUnit_Framework_TestCase {
         $this->flash = new FlashNotifier($this->session);
 	}
 
-	/** @test */
-	public function it_displays_default_flash_notifications()
-	{
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Welcome Aboard');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'info');
-
-        $this->flash->message('Welcome Aboard');
-	}
-
     /** @test */
     public function it_displays_info_flash_notifications()
     {
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Welcome Aboard');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'info');
+        $notification = [
+            'type' => 'info',
+            'content' => [
+                'title' => 'Info title',
+                'message' => 'Info message',
+            ],
+        ];
 
-        $this->flash->info('Welcome Aboard');
+        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+
+        $this->flash->info('Info message', 'Info title');
     }
 
 	/** @test */
 	public function it_displays_success_flash_notifications()
 	{
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Welcome Aboard');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'success');
+        $notification = [
+            'type' => 'success',
+            'content' => [
+                'title' => 'Success title',
+                'message' => 'Success message',
+            ],
+        ];
 
-		$this->flash->success('Welcome Aboard');
+        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+
+        $this->flash->success('Success message', 'Success title');
 	}
 
 	/** @test */
 	public function it_displays_error_flash_notifications()
 	{
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Uh Oh');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'danger');
+        $notification = [
+            'type' => 'danger',
+            'content' => [
+                'title' => 'Error title',
+                'message' => 'Error message',
+            ],
+        ];
 
-        $this->flash->error('Uh Oh');
+        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+
+        $this->flash->error('Error message', 'Error title');
 	}
 
     /** @test */
     public function it_displays_warning_flash_notifications()
     {
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Be careful!');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'warning');
+        $notification = [
+            'type' => 'warning',
+            'content' => [
+                'title' => 'Warning title',
+                'message' => 'Warning message',
+            ],
+        ];
 
-        $this->flash->warning('Be careful!');
-    }
+        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
 
-    /** @test */
-    public function it_displays_custom_message_titles()
-    {
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'You are now signed up.');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Success Heading');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'success');
-
-        $this->flash->success('You are now signed up.', 'Success Heading');
-    }
-
-	/** @test */
-	public function it_displays_flash_overlay_notifications()
-	{
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Overlay Message');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'info');
-        $this->session->shouldReceive('flash')->with('flash_notification.overlay', true);
-
-        $this->flash->overlay('Overlay Message');
-	}
-
-    /** @test */
-    public function it_displays_flash_overlay_notifications_with_custom_level()
-    {
-        $this->session->shouldReceive('flash')->with('flash_notification.message', 'Overlay Message');
-        $this->session->shouldReceive('flash')->with('flash_notification.title', 'Notice');
-        $this->session->shouldReceive('flash')->with('flash_notification.level', 'danger');
-        $this->session->shouldReceive('flash')->with('flash_notification.overlay', true);
-
-        $this->flash->overlay('Overlay Message','Notice','danger');
+        $this->flash->warning('Warning message', 'Warning title');
     }
 
 }
