@@ -5,15 +5,21 @@
 First, pull in the package through Composer.
 
 Add the repository in your composer.json:
-```"repositories": [
+
+```json
+"repositories": [
     {
         "url": "https://github.com/GMenti/l5-notifier.git",
         "type": "git"
     }
-],```
+],
+```
 
 And, add the notifier in require dependecies:
-```"menti/l5-notifier": "dev-master"```
+
+```json
+"menti/l5-notifier": "dev-master"
+```
 
 
 And then, if using Laravel 5, include the service provider within `config/app.php`.
