@@ -1,5 +1,5 @@
 {
-    "name": "notifier/flash",
+    "name": "menti/l5-notifier",
     "description": "Easy flash notifications",
     "license": "MIT",
     "authors": [
@@ -17,10 +17,10 @@
     },
     "autoload": {
         "psr-0": {
-            "Notifier\\Flash": "src/"
+            "Menti\\Flash": "src/"
         },
         "files": [
-            "src/Notifier/Flash/functions.php"
+            "src/Menti/Flash/functions.php"
         ]
     },
     "minimum-stability": "stable"

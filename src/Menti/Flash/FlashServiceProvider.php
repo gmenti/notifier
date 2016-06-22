@@ -1,4 +1,4 @@
-<?php namespace Notifier\Flash;
+<?php namespace Menti\Flash;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -20,12 +20,12 @@ class FlashServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Notifier\Flash\SessionStore',
-            'Notifier\Flash\LaravelSessionStore'
+            'Menti\Flash\SessionStore',
+            'Menti\Flash\LaravelSessionStore'
         );
 
         $this->app->singleton('flash', function () {
-            return $this->app->make('Notifier\Flash\FlashNotifier');
+            return $this->app->make('Menti\Flash\FlashNotifier');
         });
     }
 

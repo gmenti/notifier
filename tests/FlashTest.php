@@ -1,6 +1,6 @@
 <?php
 
-use Notifier\Flash\FlashNotifier;
+use Menti\Flash\FlashNotifier;
 use Mockery as m;
 
 class FlashTest extends PHPUnit_Framework_TestCase {
@@ -11,7 +11,7 @@ class FlashTest extends PHPUnit_Framework_TestCase {
 
 	public function setUp()
 	{
-        $this->session = m::mock('Notifier\Flash\SessionStore');
+        $this->session = m::mock('Menti\Flash\SessionStore');
         $this->flash = new FlashNotifier($this->session);
 	}
 

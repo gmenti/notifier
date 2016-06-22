@@ -1,4 +1,4 @@
-<?php namespace Notifier\Flash;
+<?php namespace Menti\Flash;
 
 interface SessionStore {
 
