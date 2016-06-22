@@ -18,15 +18,13 @@ class FlashTest extends PHPUnit_Framework_TestCase {
     /** @test */
     public function it_displays_info_flash_notifications()
     {
-        $notification = [
+        $this->session->shouldReceive('flash')->with('flash_notification', [
             'type' => 'info',
             'content' => [
                 'title' => 'Info title',
                 'message' => 'Info message',
             ],
-        ];
-
-        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+        ]);
 
         $this->flash->info('Info message', 'Info title');
     }
@@ -34,15 +32,13 @@ class FlashTest extends PHPUnit_Framework_TestCase {
 	/** @test */
 	public function it_displays_success_flash_notifications()
 	{
-        $notification = [
+        $this->session->shouldReceive('flash')->with('flash_notification', [
             'type' => 'success',
             'content' => [
                 'title' => 'Success title',
                 'message' => 'Success message',
             ],
-        ];
-
-        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+        ]);
 
         $this->flash->success('Success message', 'Success title');
 	}
@@ -50,15 +46,13 @@ class FlashTest extends PHPUnit_Framework_TestCase {
 	/** @test */
 	public function it_displays_error_flash_notifications()
 	{
-        $notification = [
+        $this->session->shouldReceive('flash')->with('flash_notification', [
             'type' => 'danger',
             'content' => [
                 'title' => 'Error title',
                 'message' => 'Error message',
             ],
-        ];
-
-        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+        ]);
 
         $this->flash->error('Error message', 'Error title');
 	}
@@ -66,15 +60,13 @@ class FlashTest extends PHPUnit_Framework_TestCase {
     /** @test */
     public function it_displays_warning_flash_notifications()
     {
-        $notification = [
+        $this->session->shouldReceive('flash')->with('flash_notification', [
             'type' => 'warning',
             'content' => [
                 'title' => 'Warning title',
                 'message' => 'Warning message',
             ],
-        ];
-
-        $this->session->shouldReceive('flash')->with('flash_notification', json_encode($notification));
+        ]);
 
         $this->flash->warning('Warning message', 'Warning title');
     }

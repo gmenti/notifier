@@ -89,7 +89,7 @@ class FlashNotifier
             ],
         ];
 
-        $this->session->flash('flash_notification', json_encode($notification));
+        $this->session->flash('flash_notification', $notification);
 
         return $this;
     }
