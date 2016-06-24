@@ -105,4 +105,14 @@ class FlashNotifier
 
         return $this;
     }
+    
+    /**
+     * Get all flash notifications in session.
+     *
+     * @return array
+     */
+    public function getAll()
+    {
+        return $this->session->get('flash_notifications');
+    }
 }
