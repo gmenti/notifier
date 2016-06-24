@@ -19,4 +19,11 @@ interface SessionStore {
      */
     public function getAll();
 
+    /**
+     * Check if exist flash notifications in session.
+     *
+     * @return string
+     */
+    public function hasNotification();
+
 } 

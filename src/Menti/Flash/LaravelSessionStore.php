@@ -48,4 +48,14 @@ class LaravelSessionStore implements SessionStore
     {
         return $this->session->get($this->name);
     }
+
+    /**
+     * Check if exist flash notifications in session.
+     *
+     * @return string
+     */
+    public function hasNotification()
+    {
+        return $this->session->has($this->name);
+    }
 }

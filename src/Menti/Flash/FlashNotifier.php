@@ -130,4 +130,14 @@ class FlashNotifier
     {
         return json_encode($this->session->getAll());
     }
+
+    /**
+     * Check if exist flash notifications in session.
+     *
+     * @return string
+     */
+    public function hasNotification()
+    {
+        return $this->session->hasNotification();
+    }
 }
