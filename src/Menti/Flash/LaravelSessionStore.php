@@ -12,7 +12,7 @@ class LaravelSessionStore implements SessionStore
     private $session;
 
     /**
-     * @var String
+     * @var string
      */
     private $name;
 

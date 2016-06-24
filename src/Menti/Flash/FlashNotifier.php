@@ -12,6 +12,11 @@ class FlashNotifier
     private $session;
 
     /**
+     * @var bool
+     */
+    private $isJson;
+
+    /**
      * Create a new flash notifier instance.
      *
      * @param SessionStore $session
@@ -114,5 +119,15 @@ class FlashNotifier
     public function getAll()
     {
         return $this->session->getAll();
+    }
+
+    /**
+     * Get all flash notifications in session.
+     *
+     * @return string
+     */
+    public function getAllJson()
+    {
+        return json_encode($this->session->getAll());
     }
 }
