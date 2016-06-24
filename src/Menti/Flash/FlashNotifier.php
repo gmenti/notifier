@@ -26,9 +26,9 @@ class FlashNotifier
      * @param string $message
      * @return $this
      */
-    public function info($message, $title = '')
+    public function info($title, $message)
     {
-        $this->message($message, $title, 'info');
+        $this->message($title, $message, 'info');
 
         return $this;
     }
@@ -39,9 +39,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function success($message, $title = '')
+    public function success($title, $message)
     {
-        $this->message($message, $title, 'success');
+        $this->message($title, $message, 'success');
 
         return $this;
     }
@@ -52,9 +52,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function error($message, $title = '')
+    public function error($title, $message)
     {
-        $this->message($message, $title, 'error');
+        $this->message($title, $message, 'error');
 
         return $this;
     }
@@ -65,9 +65,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function danger($message, $title = '')
+    public function danger($title, $message)
     {
-        $this->message($message, $title, 'danger');
+        $this->message($title, $message, 'danger');
 
         return $this;
     }
@@ -78,9 +78,9 @@ class FlashNotifier
      * @param  string $message
      * @return $this
      */
-    public function warning($message, $title = '')
+    public function warning($title, $message)
     {
-        $this->message($message, $title, 'warning');
+        $this->message($title, $message, 'warning');
 
         return $this;
     }
@@ -92,11 +92,15 @@ class FlashNotifier
      * @param  string $level
      * @return $this
      */
-    private function message($message, $title, $level)
+    private function message($title, $message, $level)
     {
-        $this->session->flash('flash.type', $level);
-        $this->session->flash('flash.content.title', $title);
-        $this->session->flash('flash.content.message', $message);
+        $this->session->flash([
+            'type' => $level,
+            'content' => [
+                'title' => $title,
+                'message' => $message,
+            ],
+        ]);
 
         return $this;
     }

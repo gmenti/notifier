@@ -23,9 +23,12 @@ class LaravelSessionStore implements SessionStore {
      * @param $name
      * @param $data
      */
-    public function flash($name, $data)
-    {
-        $this->session->flash($name, $data);
+    public function flash($data)
+    {   
+        $dataInSession = $this->session->get('flash_notifications');
+        $dataInSession[] = $data;
+
+        $this->session->flash('flash_notifications', $dataInSession);
     }
 
 }
