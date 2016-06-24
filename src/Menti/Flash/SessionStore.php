@@ -1,4 +1,6 @@
-<?php namespace Menti\Flash;
+<?php 
+
+namespace Menti\Flash;
 
 interface SessionStore {
 
