@@ -1,9 +1,11 @@
-<?php namespace Menti\Flash;
+<?php 
+
+namespace Menti\Flash;
 
 use Illuminate\Session\Store;
 
-class LaravelSessionStore implements SessionStore {
-
+class LaravelSessionStore implements SessionStore 
+{
     /**
      * @var Store
      */
@@ -30,5 +32,4 @@ class LaravelSessionStore implements SessionStore {
 
         $this->session->flash('flash_notifications', $dataInSession);
     }
-
 }

@@ -1,8 +1,9 @@
-<?php namespace Menti\Flash;
+<?php 
+
+namespace Menti\Flash;
 
 class FlashNotifier
 {
-
     /**
      * The session writer.
      *
@@ -104,5 +105,4 @@ class FlashNotifier
 
         return $this;
     }
-
 }

@@ -18,10 +18,7 @@
     "autoload": {
         "psr-0": {
             "Menti\\Flash": "src/"
-        },
-        "files": [
-            "src/Menti/Flash/functions.php"
-        ]
+        }
     },
     "minimum-stability": "stable"
 }
