@@ -105,7 +105,7 @@ class FlashNotifier
 
         return $this;
     }
-    
+
     /**
      * Get all flash notifications in session.
      *
@@ -113,6 +113,6 @@ class FlashNotifier
      */
     public function getAll()
     {
-        return $this->session->get('flash_notifications');
+        return $this->session->getAll();
     }
 }

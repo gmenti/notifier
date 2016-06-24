@@ -12,4 +12,11 @@ interface SessionStore {
      */
     public function flash($data);
 
+    /**
+     * Get all flash notifications in session.
+     *
+     * @return array
+     */
+    public function getAll();
+
 } 

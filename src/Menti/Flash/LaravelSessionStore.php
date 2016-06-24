@@ -12,11 +12,17 @@ class LaravelSessionStore implements SessionStore
     private $session;
 
     /**
+     * @var String
+     */
+    private $name;
+
+    /**
      * @param Store $session
      */
     function __construct(Store $session)
     {
         $this->session = $session;
+        $this->name = 'flash_notifications';
     }
 
     /**
@@ -27,9 +33,19 @@ class LaravelSessionStore implements SessionStore
      */
     public function flash($data)
     {   
-        $dataInSession = $this->session->get('flash_notifications');
+        $dataInSession = $this->session->get($this->name);
         $dataInSession[] = $data;
 
-        $this->session->flash('flash_notifications', $dataInSession);
+        $this->session->flash($this->name, $dataInSession);
+    }
+
+    /**
+     * Get all flash notifications in session.
+     *
+     * @return array
+     */
+    public function getAll()
+    {
+        return $this->session->get($this->name);
     }
 }
