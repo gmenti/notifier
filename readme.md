@@ -26,7 +26,7 @@ And then, if using Laravel 5, include the service provider within `config/app.ph
 
 ```php
 'providers' => [
-    Menti\Flash\FlashServiceProvider::class,
+    Mentito\Notifier\NotifierServiceProvider::class,
 ];
 ```
 
@@ -34,7 +34,7 @@ And then, if using Laravel 5, include the service provider within `config/app.ph
 
 ```php
 'aliases' => [
-    'Flash' => Menti\Flash\Flash:class,
+    'Notifier' => Mentito\Notifier\Notifier:class,
 ];
 ```
 
@@ -45,26 +45,26 @@ Within your controllers, before you perform a redirect...
 ```php
 public function store()
 {
-    Flash::success('Success title!', It's very good!');
+    Notifier::success('Success title!', 'WTF, this notification is very good!');
 
-    return Redirect::home();
+    return view('welcome');
 }
 ```
 
 You may also do:
 
-- `Flash::info('Title', Message')`
-- `Flash::success('Title', 'Message')`
-- `Flash::error('Title', 'Message')`
-- `Flash::danger('Title', 'Message')`
-- `Flash::warning('Title', 'Message')`
+- `Notifier::info('Title', Message')`
+- `Notifier::success('Title', 'Message')`
+- `Notifier::error('Title', 'Message')`
+- `Notifier::danger('Title', 'Message')`
+- `Notifier::warning('Title', 'Message')`
 
 
 ## Example with Bootstrap
 
 ```html
-@if (Flash::hasNotification())
-    @foreach (Flash::getAll() as $notification)
+@if (Notifier::hasNotification())
+    @foreach (Notifier::getAll() as $notification)
         <div class = "alert alert-{{ $notification['type'] }}">
             <strong>{{ $notification['content']['title'] }}</strong> {{ $notification['content']['message'] }}
         </div>
