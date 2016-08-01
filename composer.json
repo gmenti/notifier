@@ -1,6 +1,6 @@
 {
-    "name": "menti/l5-notifier",
-    "description": "Easy flash notifications",
+    "name": "menti/notifier",
+    "description": "Flash notifications for Laravel",
     "license": "MIT",
     "authors": [
         {
