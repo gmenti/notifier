@@ -12,11 +12,6 @@ class FlashNotifier
     private $session;
 
     /**
-     * @var bool
-     */
-    private $isJson;
-
-    /**
      * Create a new flash notifier instance.
      *
      * @param SessionStore $session
@@ -29,6 +24,7 @@ class FlashNotifier
     /**
      * Flash an information message.
      *
+     * @param string $title
      * @param string $message
      * @return $this
      */
@@ -42,6 +38,7 @@ class FlashNotifier
     /**
      * Flash a success message.
      *
+     * @param  string $title
      * @param  string $message
      * @return $this
      */
@@ -55,6 +52,7 @@ class FlashNotifier
     /**
      * Flash an error message.
      *
+     * @param  string $title
      * @param  string $message
      * @return $this
      */
@@ -68,6 +66,7 @@ class FlashNotifier
     /**
      * Flash an danger message.
      *
+     * @param  string $title
      * @param  string $message
      * @return $this
      */
@@ -79,8 +78,9 @@ class FlashNotifier
     }
 
     /**
-     * Flash a warning message.
+     * Flash an warning message.
      *
+     * @param  string $title
      * @param  string $message
      * @return $this
      */
@@ -94,6 +94,7 @@ class FlashNotifier
     /**
      * Flash a general message.
      *
+     * @param  string $title
      * @param  string $message
      * @param  string $level
      * @return $this
@@ -122,13 +123,13 @@ class FlashNotifier
     }
 
     /**
-     * Get all flash notifications in session.
+     * Get all flash notifications in json format.
      *
      * @return string
      */
     public function getAllJson()
     {
-        return json_encode($this->session->getAll());
+        return json_encode($this->getAll());
     }
 
     /**
