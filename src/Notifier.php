@@ -1,25 +1,17 @@
 <?php 
 
-namespace Menti\Flash;
+namespace Mentito\Notifier;
 
-class FlashNotifier
+use Illuminate\Support\Facades\Session;
+
+class Notifier
 {
     /**
-     * The session writer.
-     *
-     * @var SessionStore
+     * Name of variable to set in session.
+     * 
+     * @var string
      */
-    private $session;
-
-    /**
-     * Create a new flash notifier instance.
-     *
-     * @param SessionStore $session
-     */
-    function __construct(SessionStore $session)
-    {
-        $this->session = $session;
-    }
+    private $name = 'mentito_notifications';
 
     /**
      * Flash an information message.
@@ -101,7 +93,7 @@ class FlashNotifier
      */
     private function message($title, $message, $level)
     {
-        $this->session->flash([
+        $this->flash([
             'type' => $level,
             'content' => [
                 'title' => $title,
@@ -113,17 +105,17 @@ class FlashNotifier
     }
 
     /**
-     * Get all flash notifications in session.
+     * Get all notifications of session.
      *
      * @return array
      */
     public function getAll()
     {
-        return $this->session->getAll();
+        return Session::get($this->name);
     }
 
     /**
-     * Get all flash notifications in json format.
+     * Get all notifications of session in json format.
      *
      * @return string
      */
@@ -133,12 +125,27 @@ class FlashNotifier
     }
 
     /**
-     * Check if exist flash notifications in session.
+     * Flash a message to the session.
      *
-     * @return string
+     * @param $name
+     * @param $data
+     */
+    private function flash($data)
+    {   
+        $dataInSession = Session::get($this->name);
+
+        $dataInSession[] = $data;
+
+        Session::flash($this->name, $dataInSession);
+    }
+
+    /**
+     * Check if exist notifications in session.
+     *
+     * @return boolean
      */
     public function hasNotification()
     {
-        return $this->session->hasNotification();
+        return Session::has($this->name);
     }
 }

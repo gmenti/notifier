@@ -1,4 +1,4 @@
-# Easy Flash Messages
+# Flash notifications for Laravel
 
 ## Installation
 
@@ -18,7 +18,7 @@ Add the repository in your composer.json:
 And, add the notifier in require dependecies:
 
 ```json
-"menti/notifier": "dev-master"
+"mentito/notifier": "dev-master"
 ```
 
 
