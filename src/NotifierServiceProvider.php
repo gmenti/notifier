@@ -1,6 +1,6 @@
 <?php 
 
-namespace Menti\Notifier;
+namespace Mentito\Notifier;
 
 use Illuminate\Support\ServiceProvider;
 
