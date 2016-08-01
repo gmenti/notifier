@@ -1,6 +1,6 @@
 <?php 
 
-namespace Menti\Flash;
+namespace Menti\Notifier;
 
 use Illuminate\Support\ServiceProvider;
 
