@@ -11,7 +11,7 @@ class Notifier
      * 
      * @var string
      */
-    private $name = 'mentito_notifications';
+    const NOTIFICATIONS_NAME = 'mentito_notifications';
 
     /**
      * Flash an information message.
@@ -99,7 +99,7 @@ class Notifier
      */
     public static function getAll()
     {
-        return Session::get(self::name);
+        return Session::get(static::NOTIFICATIONS_NAME);
     }
 
     /**
@@ -120,11 +120,11 @@ class Notifier
      */
     private static function flash($data)
     {   
-        $dataInSession = Session::get(self::name);
+        $dataInSession = Session::get(static::NOTIFICATIONS_NAME);
 
         $dataInSession[] = $data;
 
-        Session::flash(self::name, $dataInSession);
+        Session::flash(static::NOTIFICATIONS_NAME, $dataInSession);
     }
 
     /**
@@ -134,6 +134,6 @@ class Notifier
      */
     public static function hasNotification()
     {
-        return Session::has(self::name);
+        return Session::has(static::NOTIFICATIONS_NAME);
     }
 }
