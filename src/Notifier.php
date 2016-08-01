@@ -20,11 +20,9 @@ class Notifier
      * @param string $message
      * @return $this
      */
-    public function info($title, $message)
+    public static function info($title, $message)
     {
-        $this->message($title, $message, 'info');
-
-        return $this;
+        self::message($title, $message, 'info');
     }
 
     /**
@@ -34,11 +32,9 @@ class Notifier
      * @param  string $message
      * @return $this
      */
-    public function success($title, $message)
+    public static function success($title, $message)
     {
-        $this->message($title, $message, 'success');
-
-        return $this;
+        self::message($title, $message, 'success');
     }
 
     /**
@@ -48,11 +44,9 @@ class Notifier
      * @param  string $message
      * @return $this
      */
-    public function error($title, $message)
+    public static function error($title, $message)
     {
-        $this->message($title, $message, 'error');
-
-        return $this;
+        self::message($title, $message, 'error');
     }
 
     /**
@@ -62,11 +56,9 @@ class Notifier
      * @param  string $message
      * @return $this
      */
-    public function danger($title, $message)
+    public static function danger($title, $message)
     {
-        $this->message($title, $message, 'danger');
-
-        return $this;
+        self::message($title, $message, 'danger');
     }
 
     /**
@@ -76,11 +68,9 @@ class Notifier
      * @param  string $message
      * @return $this
      */
-    public function warning($title, $message)
+    public static function warning($title, $message)
     {
-        $this->message($title, $message, 'warning');
-
-        return $this;
+        self::message($title, $message, 'warning');
     }
 
     /**
@@ -91,17 +81,15 @@ class Notifier
      * @param  string $level
      * @return $this
      */
-    private function message($title, $message, $level)
+    private static function message($title, $message, $level)
     {
-        $this->flash([
+        self::flash([
             'type' => $level,
             'content' => [
                 'title' => $title,
                 'message' => $message,
             ],
         ]);
-
-        return $this;
     }
 
     /**
@@ -109,9 +97,9 @@ class Notifier
      *
      * @return array
      */
-    public function getAll()
+    public static function getAll()
     {
-        return Session::get($this->name);
+        return Session::get(self::name);
     }
 
     /**
@@ -119,9 +107,9 @@ class Notifier
      *
      * @return string
      */
-    public function getAllJson()
+    public static function getAllJson()
     {
-        return json_encode($this->getAll());
+        return json_encode(self::getAll());
     }
 
     /**
@@ -130,13 +118,13 @@ class Notifier
      * @param $name
      * @param $data
      */
-    private function flash($data)
+    private static function flash($data)
     {   
-        $dataInSession = Session::get($this->name);
+        $dataInSession = Session::get(self::name);
 
         $dataInSession[] = $data;
 
-        Session::flash($this->name, $dataInSession);
+        Session::flash(self::name, $dataInSession);
     }
 
     /**
@@ -144,8 +132,8 @@ class Notifier
      *
      * @return boolean
      */
-    public function hasNotification()
+    public static function hasNotification()
     {
-        return Session::has($this->name);
+        return Session::has(self::name);
     }
 }
