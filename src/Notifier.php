@@ -1,6 +1,6 @@
 <?php 
 
-namespace Mentito\Notifier;
+namespace Notifier;
 
 use Illuminate\Support\Facades\Session;
 
@@ -11,7 +11,7 @@ class Notifier
      * 
      * @var string
      */
-    const NOTIFICATIONS_NAME = 'mentito_notifications';
+    const NOTIFICATIONS_NAME = 'notifier_notifications';
 
     /**
      * Flash an information message.

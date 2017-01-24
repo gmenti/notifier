@@ -1,5 +1,5 @@
 {
-    "name": "mentito/notifier",
+    "name": "gmenti/notifier",
     "description": "Flash notifications for Laravel",
     "license": "MIT",
     "authors": [
@@ -14,7 +14,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mentito\\Notifier\\": "src/"
+            "Notifier\\": "src/"
         }
     }
 }
